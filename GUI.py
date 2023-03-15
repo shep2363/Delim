@@ -1,4 +1,5 @@
 # This code is for the GUI
+# The original code is in the file: File_Processing_Tool.py
 import os
 import tkinter as tk
 from tkinter import filedialog
