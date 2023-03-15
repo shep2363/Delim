@@ -1,3 +1,4 @@
+# This code is for the GUI
 import os
 import tkinter as tk
 from tkinter import filedialog
