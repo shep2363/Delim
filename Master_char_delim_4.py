@@ -8,7 +8,7 @@ def get_folder_paths(folder_path):
 
 def process_files(root, file, remove, file_extensions):
     file_path = os.path.join(root, file)
-    if file.lower().endswith(file_extensions) and os.path.isfile(file_path):
+    if file.endswith(file_extensions) and os.path.isfile(file_path):
         with open(file_path, 'r') as f:
             content = f.read()
         if remove.encode('utf-8') in content.encode('utf-8'):
@@ -17,6 +17,7 @@ def process_files(root, file, remove, file_extensions):
                 f.write(new_content.decode('utf-8'))
             new_file_path = os.path.join(root, file.replace(remove, ''))
             os.rename(file_path, new_file_path)
+
 
 def process_tekla_files(root, file, remove):
     file_path = os.path.join(root, file)
@@ -51,7 +52,7 @@ def main():
 
     for root, dirs, files in os.walk(zeman_folder_path):
         for file in files:
-            process_files(root, file, remove, ('.nc', '.Xml'))
+            process_files(root, file, remove, ('.nc','.Xml','.xml'))
 
     for root, dirs, files in os.walk(dxf_folder_path):
         for file in files:
