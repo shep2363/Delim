@@ -4,6 +4,7 @@ import os
 import tkinter as tk
 from tkinter import filedialog
 
+
 # Your original functions
 def get_folder_paths(folder_path):
     return {
@@ -12,11 +13,13 @@ def get_folder_paths(folder_path):
         'dxf': os.path.join(folder_path, '6_DXF Files')
     }
 
+
 def process_files(folder_path, extensions, remove):
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             if file.lower().endswith(extensions):
                 process_file(root, file, remove)
+
 
 def process_file(root, file, remove):
     file_path = os.path.join(root, file)
@@ -39,11 +42,13 @@ def process_file(root, file, remove):
 
             os.remove(file_path)
 
+
 # New functions for the GUI
 def browse_folder():
     folder_path = filedialog.askdirectory()
     folder_path_entry.delete(0, tk.END)
     folder_path_entry.insert(0, folder_path)
+
 
 def process_button_click():
     folder_path = folder_path_entry.get()
@@ -53,7 +58,8 @@ def process_button_click():
         paths = get_folder_paths(folder_path)
         process_files(paths['zeman'], ('.nc', '.Xml', '.xml'), remove)
         process_files(paths['dxf'], ('.dxf',), remove)
-        process_files(paths['tekla'], ('.nc1', '.xml', '.pdf','Xml'), remove)
+        process_files(paths['tekla'], ('.nc1', '.xml', '.pdf', 'Xml'), remove)
+
 
 # GUI setup
 root = tk.Tk()
