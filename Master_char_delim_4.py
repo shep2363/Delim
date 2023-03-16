@@ -51,7 +51,7 @@ def main():
 
     for root, dirs, files in os.walk(zeman_folder_path):
         for file in files:
-            process_files(root, file, remove, ('.nc', '.xml'))
+            process_files(root, file, remove, ('.nc', '.Xml'))
 
     for root, dirs, files in os.walk(dxf_folder_path):
         for file in files:
