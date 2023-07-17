@@ -7,7 +7,7 @@ def get_folder_paths(folder_path):
     dxf_folder_path = os.path.join(folder_path, '6_DXF Files')
     return zeman_folder_path, tekla_folder_path, dxf_folder_path
 
-
+# test this function 
 def process_files(root, filename, remove, file_extensions):
     file_path = os.path.join(root, filename)
     if filename.endswith(file_extensions) and os.path.isfile(file_path):
