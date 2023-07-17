@@ -8,16 +8,16 @@ def get_folder_paths(folder_path):
     return zeman_folder_path, tekla_folder_path, dxf_folder_path
 
 
-def process_files(root, file, remove, file_extensions):
-    file_path = os.path.join(root, file)
-    if file.endswith(file_extensions) and os.path.isfile(file_path):
+def process_files(root, filename, remove, file_extensions):
+    file_path = os.path.join(root, filename)
+    if filename.endswith(file_extensions) and os.path.isfile(file_path):
         with open(file_path, 'r') as f:
             content = f.read()
-        if remove.encode('utf-8') in content.encode('utf-8'):
-            new_content = content.encode('utf-8').replace(remove.encode('utf-8'), b'')
+        if remove in content:
+            new_content = content.replace(remove, '')
             with open(file_path, 'w') as f:
-                f.write(new_content.decode('utf-8'))
-            new_file_path = os.path.join(root, file.replace(remove, ''))
+                f.write(new_content)
+            new_file_path = os.path.join(root, filename.replace(remove, ''))
             os.rename(file_path, new_file_path)
 
 
